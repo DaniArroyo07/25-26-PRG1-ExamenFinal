@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 class AnalizadorTexto {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Analizador de Texto - Herramienta Linguistica v2.0");
         System.out.println("Introduce un texto (mínimo 10 caracteres):");
-        String textoUsuario = sc.nextLine();
+        String textoUsuario = scanner.nextLine();
 
         if (textoUsuario.length() < 10) {
             System.out.println("El texto es demasiado corto");
@@ -103,6 +103,7 @@ class AnalizadorTexto {
     }
 
 }
+
 
 
 
