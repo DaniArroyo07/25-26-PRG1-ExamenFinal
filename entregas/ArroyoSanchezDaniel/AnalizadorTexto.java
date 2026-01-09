@@ -41,26 +41,8 @@ class AnalizadorTexto {
         
         ComplejidadLectura(textoUsuario, vocales, consonantes, espacios, otros, numeros);
        
-
-        boolean tieneMayuscula = false;
-        boolean tieneMinuscula = false;
-        for (int i = 0; i < textoUsuario.length(); i++) {
-            char caracter = textoUsuario.charAt(i);
-            if (caracter >= 'A' && caracter <= 'Z') {
-                tieneMayuscula = true;
-            }
-            if (caracter >= 'a' && caracter <= 'z') {
-                tieneMinuscula = true;
-            }
-        }
-
-        if (tieneMayuscula && tieneMinuscula && textoUsuario.charAt(0) >= 'A' && textoUsuario.charAt(0) <= 'Z' && (textoUsuario.charAt(textoUsuario.length() - 1) == '.' || textoUsuario.charAt(texto.length() - 1) == '!' || textoUsuario.charAt(textoUsuario.length() - 1) == '?') && espacios > 0) {
-            System.out.println("Formato: Oración bien formada");
-        } else if (tieneMayuscula && !tieneMinuscula && numeros >= 2 && espacios < textoUsuario.length() / 10) {
-            System.out.println("Formato: Código o identificador");
-        } else {
-            System.out.println("Formato: Variado");
-        }
+        OracionFormato(textoUsuario, espacios);
+        
     }
 
     static void CaracteristicasYEstadisticas (String textoUsuario, int vocales, int consonantes, int numeros, int espacios, int otros) {
@@ -103,10 +85,29 @@ class AnalizadorTexto {
     }
 
     static void OracionFormato(String textoUsuario, int espacios) {
-        
+        boolean tieneMayuscula = false;
+        boolean tieneMinuscula = false;
+        for (int i = 0; i < textoUsuario.length(); i++) {
+            char caracter = textoUsuario.charAt(i);
+            if (caracter >= 'A' && caracter <= 'Z') {
+                tieneMayuscula = true;
+            }
+            if (caracter >= 'a' && caracter <= 'z') {
+                tieneMinuscula = true;
+            }
+        }
+
+        if (tieneMayuscula && tieneMinuscula && textoUsuario.charAt(0) >= 'A' && textoUsuario.charAt(0) <= 'Z' && (textoUsuario.charAt(textoUsuario.length() - 1) == '.' || textoUsuario.charAt(texto.length() - 1) == '!' || textoUsuario.charAt(textoUsuario.length() - 1) == '?') && espacios > 0) {
+            System.out.println("Formato: Oración bien formada");
+        } else if (tieneMayuscula && !tieneMinuscula && numeros >= 2 && espacios < textoUsuario.length() / 10) {
+            System.out.println("Formato: Código o identificador");
+        } else {
+            System.out.println("Formato: Variado");
+        }
     }
 
 }
+
 
 
 
