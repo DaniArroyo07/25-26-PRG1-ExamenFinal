@@ -38,13 +38,9 @@ class AnalizadorTexto {
         }
 
         CaracteristicasYEstadisticas(textoUsuario, consonantes, vocales, numeros, espacios, otros);
-
-        double densidadVocales = (vocales * 100.0) / textoUsuario.length();
-        if (densidadVocales > 45 && vocales > 10 && consonantes > 5 && espacios > 2) {
-            System.out.println("¡Texto muy fluido!");
-        } else if (densidadVocales < 25 && consonantes > 10 && (otros > 5 || numeros > 3)) {
-            System.out.println("Texto complejo de leer");
-        }
+        
+        ComplejidadLectura(textoUsuario, vocales, consonantes, espacios, otros, numeros);
+       
 
         boolean tieneMayuscula = false;
         boolean tieneMinuscula = false;
@@ -98,10 +94,16 @@ class AnalizadorTexto {
     }
 
     static void ComplejidadLectura(String textoUsuario, int vocales, int consonantes, int espacios, int otros, int numeros) {
-
+         double densidadVocales = (vocales * 100.0) / textoUsuario.length();
+        if (densidadVocales > 45 && vocales > 10 && consonantes > 5 && espacios > 2) {
+            System.out.println("¡Texto muy fluido!");
+        } else if (densidadVocales < 25 && consonantes > 10 && (otros > 5 || numeros > 3)) {
+            System.out.println("Texto complejo de leer");
+        }
     }
 
 }
+
 
 
 
