@@ -17,7 +17,7 @@ class AnalizadorTexto {
         int consonantes = 0;
         int numeros = 0;
         int espacios = 0;
-        int otros = 0;
+        int otrosCaracteres = 0;
 
         for (int i = 0; i < textoUsuario.length(); i++) {
             char caracter = textoUsuario.charAt(i);
@@ -33,34 +33,34 @@ class AnalizadorTexto {
             } else if (caracter == ' ') {
                 espacios++;
             } else {
-                otros++;
+                otrosCaracteres++;
             }
         }
 
-        CaracteristicasYEstadisticas(textoUsuario, consonantes, vocales, numeros, espacios, otros);
+        CaracteristicasYEstadisticas(textoUsuario, consonantes, vocales, numeros, espacios, otrosCaracteres);
         
-        ComplejidadLectura(textoUsuario, vocales, consonantes, espacios, otros, numeros);
+        ComplejidadLectura(textoUsuario, vocales, consonantes, espacios, otrosCaracteres, numeros);
        
-        OracionFormato(textoUsuario, espacios);
+        OracionFormato(textoUsuario, espacios, numeros);
         
     }
 
-    static void CaracteristicasYEstadisticas (String textoUsuario, int vocales, int consonantes, int numeros, int espacios, int otros) {
+    static void CaracteristicasYEstadisticas (String textoUsuario, int vocales, int consonantes, int numeros, int espacios, int otrosCaracteres) {
         System.out.println("ESTADÍSTICAS BÁSICAS");
         System.out.println("Longitud: " + textoUsuario.length());
         System.out.println("Vocales: " + vocales);
         System.out.println("Consonantes: " + consonantes);
         System.out.println("Números: " + numeros);
         System.out.println("Espacios: " + espacios);
-        System.out.println("Otros: " + otros);
+        System.out.println("Otros: " + otrosCaracteres);
 
         if (vocales > consonantes && consonantes > 0 && textoUsuario.length() > 20 && espacios >= 2 && numeros == 0) {
             System.out.println("Categoría: Texto literario con alta densidad vocálica");
-        } else if (consonantes > vocales && vocales > 0 && textoUsuario.length() > 15 && (otros >= 3 || numeros >= 2) && espacios >= 1) {
+        } else if (consonantes > vocales && vocales > 0 && textoUsuario.length() > 15 && (otrosCaracteres >= 3 || numeros >= 2) && espacios >= 1) {
             System.out.println("Categoría: Texto técnico o científico");
-        } else if (numeros > 5 && (vocales + consonantes) < textoUsuario.length() / 2 && espacios < textoUsuario.length() / 10 && otros >= 2) {
+        } else if (numeros > 5 && (vocales + consonantes) < textoUsuario.length() / 2 && espacios < textoUsuario.length() / 10 && otrosCaracteres >= 2) {
             System.out.println("Categoría: Código o expresión matemática");
-        } else if (espacios > textoUsuario.length() / 5 && vocales > 0 && consonantes > 0 && numeros < 3 && otros < vocales / 2) {
+        } else if (espacios > textoUsuario.length() / 5 && vocales > 0 && consonantes > 0 && numeros < 3 && otrosCaracteres < vocales / 2) {
             System.out.println("Categoría: Texto informal o conversacional");
         } else {
             System.out.println("Categoría: Texto genérico");
@@ -75,16 +75,16 @@ class AnalizadorTexto {
         System.out.println("Palabras estimadas: " + palabras);
     }
 
-    static void ComplejidadLectura(String textoUsuario, int vocales, int consonantes, int espacios, int otros, int numeros) {
+    static void ComplejidadLectura(String textoUsuario, int vocales, int consonantes, int espacios, int otrosCaracteres, int numeros) {
          double densidadVocales = (vocales * 100.0) / textoUsuario.length();
         if (densidadVocales > 45 && vocales > 10 && consonantes > 5 && espacios > 2) {
             System.out.println("¡Texto muy fluido!");
-        } else if (densidadVocales < 25 && consonantes > 10 && (otros > 5 || numeros > 3)) {
+        } else if (densidadVocales < 25 && consonantes > 10 && (otrosCaracteres > 5 || numeros > 3)) {
             System.out.println("Texto complejo de leer");
         }
     }
 
-    static void OracionFormato(String textoUsuario, int espacios) {
+    static void OracionFormato(String textoUsuario, int espacios, int numeros) {
         boolean tieneMayuscula = false;
         boolean tieneMinuscula = false;
         for (int i = 0; i < textoUsuario.length(); i++) {
@@ -97,7 +97,7 @@ class AnalizadorTexto {
             }
         }
 
-        if (tieneMayuscula && tieneMinuscula && textoUsuario.charAt(0) >= 'A' && textoUsuario.charAt(0) <= 'Z' && (textoUsuario.charAt(textoUsuario.length() - 1) == '.' || textoUsuario.charAt(texto.length() - 1) == '!' || textoUsuario.charAt(textoUsuario.length() - 1) == '?') && espacios > 0) {
+        if (tieneMayuscula && tieneMinuscula && textoUsuario.charAt(0) >= 'A' && textoUsuario.charAt(0) <= 'Z' && (textoUsuario.charAt(textoUsuario.length() - 1) == '.' || textoUsuario.charAt(textoUsuario.length() - 1) == '!' || textoUsuario.charAt(textoUsuario.length() - 1) == '?') && espacios > 0) {
             System.out.println("Formato: Oración bien formada");
         } else if (tieneMayuscula && !tieneMinuscula && numeros >= 2 && espacios < textoUsuario.length() / 10) {
             System.out.println("Formato: Código o identificador");
@@ -107,6 +107,7 @@ class AnalizadorTexto {
     }
 
 }
+
 
 
 
