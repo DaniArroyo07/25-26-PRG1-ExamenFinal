@@ -20,17 +20,17 @@ class AnalizadorTexto {
         int otros = 0;
 
         for (int i = 0; i < textoUsuario.length(); i++) {
-            char c = textoUsuario.charAt(i);
-            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-                if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-                    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            char caracter = textoUsuario.charAt(i);
+            if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {
+                if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u' ||
+                    caracter == 'A' || caracter == 'E' || caracter == 'I' || caracter == 'O' || caracter == 'U') {
                     vocales++;
                 } else {
                     consonantes++;
                 }
-            } else if (c >= '0' && c <= '9') {
+            } else if (caracter >= '0' && caracter <= '9') {
                 numeros++;
-            } else if (c == ' ') {
+            } else if (caracter == ' ') {
                 espacios++;
             } else {
                 otros++;
@@ -75,11 +75,11 @@ class AnalizadorTexto {
         boolean tieneMayuscula = false;
         boolean tieneMinuscula = false;
         for (int i = 0; i < textoUsuario.length(); i++) {
-            char c = textoUsuario.charAt(i);
-            if (c >= 'A' && c <= 'Z') {
+            char caracter = textoUsuario.charAt(i);
+            if (caracter >= 'A' && c <= 'Z') {
                 tieneMayuscula = true;
             }
-            if (c >= 'a' && c <= 'z') {
+            if (caracter >= 'a' && c <= 'z') {
                 tieneMinuscula = true;
             }
         }
