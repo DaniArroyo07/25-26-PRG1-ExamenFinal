@@ -93,5 +93,10 @@ class AnalizadorTexto {
         }
     }
 
+    static void CaracteristicasYEstadisticas (String textoUsuario, int vocales, int consonantes, int numeros, int espacios, int otros) {
+        
+    }
+
 }
+
 
