@@ -102,6 +102,10 @@ class AnalizadorTexto {
         }
     }
 
+    static void OracionFormato(String textoUsuario, int espacios) {
+        
+    }
+
 }
 
 
