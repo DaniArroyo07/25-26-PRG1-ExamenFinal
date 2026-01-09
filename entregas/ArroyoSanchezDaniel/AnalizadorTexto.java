@@ -37,7 +37,7 @@ class AnalizadorTexto {
             }
         }
 
-        
+        CaracteristicasYEstadisticas(textoUsuario, consonantes, vocales, numeros, espacios, otros);
 
         double densidadVocales = (vocales * 100.0) / textoUsuario.length();
         if (densidadVocales > 45 && vocales > 10 && consonantes > 5 && espacios > 2) {
@@ -98,6 +98,7 @@ class AnalizadorTexto {
     }
 
 }
+
 
 
 
