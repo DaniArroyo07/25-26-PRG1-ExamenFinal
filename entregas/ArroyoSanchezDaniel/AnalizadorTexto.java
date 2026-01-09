@@ -97,7 +97,12 @@ class AnalizadorTexto {
         System.out.println("Palabras estimadas: " + palabras);
     }
 
+    static void ComplejidadLectura(String textoUsuario, int vocales, int consonantes, int espacios, int otros, int numeros) {
+
+    }
+
 }
+
 
 
 
