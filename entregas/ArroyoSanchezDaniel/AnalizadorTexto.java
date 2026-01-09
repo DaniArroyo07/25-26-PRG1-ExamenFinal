@@ -49,7 +49,7 @@ class AnalizadorTexto {
             System.out.println("Categoría: Texto literario con alta densidad vocálica");
         } else if (consonantes > vocales && vocales > 0 && textoUsuario.length() > 15 && (otros >= 3 || numeros >= 2) && espacios >= 1) {
             System.out.println("Categoría: Texto técnico o científico");
-        } else if (numeros > 5 && (vocales + consonantes) < textoUsuario.length() / 2 && espacios < texto.length() / 10 && otros >= 2) {
+        } else if (numeros > 5 && (vocales + consonantes) < textoUsuario.length() / 2 && espacios < textoUsuario.length() / 10 && otros >= 2) {
             System.out.println("Categoría: Código o expresión matemática");
         } else if (espacios > textoUsuario.length() / 5 && vocales > 0 && consonantes > 0 && numeros < 3 && otros < vocales / 2) {
             System.out.println("Categoría: Texto informal o conversacional");
@@ -76,10 +76,10 @@ class AnalizadorTexto {
         boolean tieneMinuscula = false;
         for (int i = 0; i < textoUsuario.length(); i++) {
             char caracter = textoUsuario.charAt(i);
-            if (caracter >= 'A' && c <= 'Z') {
+            if (caracter >= 'A' && caracter <= 'Z') {
                 tieneMayuscula = true;
             }
-            if (caracter >= 'a' && c <= 'z') {
+            if (caracter >= 'a' && caracter <= 'z') {
                 tieneMinuscula = true;
             }
         }
@@ -94,3 +94,4 @@ class AnalizadorTexto {
     }
 
 }
+
